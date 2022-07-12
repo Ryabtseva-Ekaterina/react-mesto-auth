@@ -1,0 +1,7 @@
+.popup__container-form-input-text-error {
+        font-family: 'Inter', sans-serif;
+        font-size: 12px;
+        font-weight: normal;
+        color: #FF0000;
+        position: absolute;
+}

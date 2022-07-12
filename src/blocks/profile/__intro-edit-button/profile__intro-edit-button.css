@@ -1,0 +1,25 @@
+.profile__intro-edit-button {
+    width: 24px;
+    height: 24px;
+    background-image: url('../../../images/Edit_Button.svg');
+    object-fit: cover;
+    background-color: black;
+    border: none;
+    grid-area: edit;
+    align-self: center;
+    cursor: pointer;
+    transition: 0.2s linear;
+}
+
+@media screen and (max-width: 540px) {
+    .profile__intro-edit-button {
+        width: 18px;
+        height: 18px;
+        background-size: contain;
+        justify-self: start;
+    }
+}
+
+.profile__intro-edit-button:hover {
+    opacity: 60%;
+}

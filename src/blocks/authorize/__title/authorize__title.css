@@ -1,0 +1,14 @@
+.authorize__title {
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 900;
+    margin: 60px 0 50px;
+}
+
+@media screen and (max-width: 540px) {
+    .authorize__title {
+        font-size: 20px;
+        margin: 40px 0 40px;
+    }
+}

@@ -1,0 +1,11 @@
+.popup__container-form-input-text-error_bottom {
+    top: 200px;
+    left: 36px;
+}
+
+@media screen and (max-width: 540px) {
+    .popup__container-form-input-text-error_bottom {
+        top: 215px;
+        left: 25px;
+    }
+}

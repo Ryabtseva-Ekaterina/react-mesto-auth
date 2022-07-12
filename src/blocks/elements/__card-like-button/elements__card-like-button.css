@@ -1,0 +1,14 @@
+.elements__card-like-button {
+    width: 22px;
+    height: 19px;
+    justify-self: flex-end;
+    background-image: url('../../../images/like_disabled.svg');
+    border: none;
+    background-color: white;
+    transition: 0.2s linear;
+    cursor: pointer;
+}
+
+.elements__card-like:hover {
+    opacity: 0.5;
+}
