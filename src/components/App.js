@@ -177,19 +177,22 @@ function App() {
 
                             <Switch> 
 
-                                <Route path='/sign-in'>
+                                <Route exact={true} path="/sign-in">
                                     <Login  handleLogin = {handleLogin}
-                                            tokenCheck = {tokenCheck}/>
+                                            tokenCheck = {tokenCheck}
+                                    />
+
                                 </Route>
 
-                                <Route path='/sign-up'>
+                                <Route exact={true} path="/sign-up">
                                     <Register 
                                         onButtonClick = {setIsInfoTooltipOpen}
                                         image = {setImage}
-                                        text = {setText}/>
+                                        text = {setText}
+                                        />
                                 </Route>
 
-                                <ProtectedRoute path='/'
+                                <ProtectedRoute exact={true} path ="/"
                                     loggedIn = {loggedIn}
                                     onEditAvatar={setIsEditAvatarPopupOpen}
                                     onEditProfile={setIsEditProfilePopupOpen} 
@@ -205,40 +208,40 @@ function App() {
 
                             </Switch>
 
-                                    <EditAvatarPopup
-                                        isOpen={isEditAvatarPopupOpen}
-                                        onClose={closeAllPopup}
-                                        onUpdateAvatar={handleUpdateAvatar} 
-                                    />
-
-                                    <EditProfilePopup 
-                                        isOpen={isEditProfilePopupOpen} 
-                                        onClose={closeAllPopup} 
-                                        onUpdateUser={handleUpdateUser}
-                                    /> 
-                                    
-                                    <AddPlacePopup
-                                        isOpen={isAddPlacePopupOpen}
-                                        onClose={closeAllPopup}
-                                        onAddPlace={handleAddPlaceSubmit}
-                                    />
-
-                                    <PopupWithForm 
-                                        name='delete-form' 
-                                        title='Вы уверены?'
-                                        buttonText='Да'> 
-                                    </PopupWithForm>
-
-                                    <ImagePopup  card = {selectedCard} onClose = {closeAllPopup}/>
-
-                                    <InfoTooltip 
-                                        isOpen={isInfoTooltipOpen}
-                                        onClose={closeAllPopup}
-                                        image={image}
-                                        text={text}
-                                    />
-
                             <Footer />
+
+                            <EditAvatarPopup
+                                isOpen={isEditAvatarPopupOpen}
+                                onClose={closeAllPopup}
+                                onUpdateAvatar={handleUpdateAvatar} 
+                            />
+
+                            <EditProfilePopup 
+                                isOpen={isEditProfilePopupOpen} 
+                                onClose={closeAllPopup} 
+                                onUpdateUser={handleUpdateUser}
+                            /> 
+                                    
+                            <AddPlacePopup
+                                isOpen={isAddPlacePopupOpen}
+                                onClose={closeAllPopup}
+                                onAddPlace={handleAddPlaceSubmit}
+                            />
+
+                            <PopupWithForm 
+                                name='delete-form' 
+                                title='Вы уверены?'
+                                buttonText='Да'> 
+                            </PopupWithForm>
+
+                            <ImagePopup  card = {selectedCard} onClose = {closeAllPopup}/>
+
+                            <InfoTooltip 
+                                isOpen={isInfoTooltipOpen}
+                                onClose={closeAllPopup}
+                                image={image}
+                                text={text}
+                            />
 
                     </div>
                 </div>
