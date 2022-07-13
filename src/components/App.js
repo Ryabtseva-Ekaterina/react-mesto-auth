@@ -33,12 +33,8 @@ function App() {
     const [image, setImage] = useState();
     const history = useHistory();
 
-    //useEffect ( () => {
-    //    tokenCheck ();
-    //}, []);
-
     useEffect (() => {
-        //tokenCheck ();
+        tokenCheck()
         if (!loggedIn){
             api.getProfileInfo()
             .then((userStats)=> {

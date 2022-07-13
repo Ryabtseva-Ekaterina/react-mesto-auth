@@ -3,7 +3,7 @@ import React from 'react';
 function InfoTooltip ({onClose, isOpen, text, image}) {
 
     return (
-        <section className={'popup' +" " + (isOpen?'popup_opened':'')} >
+        <section className={`popup ${(isOpen?'popup_opened':'')}`} >
             <div className="popup__container">
                 <button 
                     className="popup__close-button" 
