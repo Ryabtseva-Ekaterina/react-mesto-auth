@@ -1,9 +1,8 @@
 import React from "react";
-import * as auth from '../auth.js';
 import {withRouter, useHistory} from 'react-router-dom';
 import Header from "./Header.js";
 
-function Login (props) {
+function Login ({authorize, handleLogin}) {
 
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
@@ -22,17 +21,10 @@ function Login (props) {
         if (!email || !password) {
             return;
         }
-        auth.authorize(email, password)
-            .then ((data) => {
-                if (data.token) {
-                    setEmail('')
-                    setPassword('')
-                    props.handleLogin (e)
-                    props.tokenCheck()
-                    history.push('/')
-                }
-            })
-            .catch (err => console.log(err));
+        setEmail('')
+        setPassword('')
+        handleLogin(e)
+        authorize(email, password)
     }
 
     function onRegister () {

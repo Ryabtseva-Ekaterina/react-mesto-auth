@@ -1,11 +1,9 @@
 import React from "react";
 import {Link, useHistory} from 'react-router-dom';
-import * as auth from '../auth.js';
 import Header from "./Header.js";
-import union from '../images/Union.png';
-import union_err from '../images/Union_error.png';
 
-function Register (props) {
+
+function Register ({onButtonClick}) {
 
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
@@ -21,18 +19,7 @@ function Register (props) {
 
     function handleSubmit (e) {
         e.preventDefault();
-        auth.register(email, password). then((res) => {
-            if (res) {
-               history.push('./sign-in');
-               props.onButtonClick(true);
-               props.text('Вы успешно зарегистрировались!')
-               props.image(union) 
-            } else {
-                props.onButtonClick(true);
-                props.text('Что-то пошло не так! Попробуйте ещё раз.')
-                props.image(union_err)
-            }
-        })
+        onButtonClick(email, password);
     }
 
     function onLogin () {

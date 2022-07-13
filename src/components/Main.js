@@ -7,7 +7,7 @@ import Header from './Header.js';
 function Main ({onEditAvatar, onEditProfile, onAddPlace, onCardClick, onCardLike, onCardDelete, cards, userData, onDeleteToken}) {
 
     const user = React.useContext(CurrentUserContext);
-    let email = userData;
+    const email = userData;
 
     function onSignOut () {
         onDeleteToken();
