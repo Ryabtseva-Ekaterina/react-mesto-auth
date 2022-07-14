@@ -29,13 +29,16 @@ function App() {
     const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
     const [userEmail, setUserEmail] = useState('');
-    const [text, setText] = useState();
-    const [image, setImage] = useState();
+    const [text, setText] = useState('');
+    const [image, setImage] = useState('');
     const history = useHistory();
 
     useEffect (() => {
         tokenCheck()
-        if (!loggedIn){
+    }, []);
+
+    useEffect (() => {
+        if (loggedIn){
             api.getProfileInfo()
             .then((userStats)=> {
                 setCurrentUser(
@@ -46,23 +49,23 @@ function App() {
                     console.log (err);
             })
 
-        api.getCards().
-            then ((data) => {
-                setCards(
-                        data.map((card) => ({
-                            _id: card._id,
-                            link: card.link,
-                            name: card.name,
-                            likes: card.likes,
-                            owner: card.owner
-                        }))
-                    )
-            })
-            .catch ((err) => {
-                    console.log (err);
-            })
-        } 
-    }, []);
+            api.getCards().
+                then ((data) => {
+                    setCards(
+                            data.map((card) => ({
+                                _id: card._id,
+                                link: card.link,
+                                name: card.name,
+                                likes: card.likes,
+                                owner: card.owner
+                            }))
+                        )
+                })
+                .catch ((err) => {
+                        console.log (err);
+                })
+            } 
+    }, [loggedIn]);
     
     function closeAllPopup () {
        setIsEditAvatarPopupOpen(false);
@@ -133,11 +136,6 @@ function App() {
             })
     }
 
-    function handleLogin (e) {
-        e.preventDefault()
-        setLoggedIn(true);
-    }
-
     function tokenCheck() {
         if (localStorage.getItem('token')) {
             const token = localStorage.getItem('token');
@@ -162,7 +160,7 @@ function App() {
         setLoggedIn(false);
     }
 
-    function register(email, password) {
+    function onRegister(email, password) {
         auth.register(email, password)
             .then((res) => {
                 if (res) {
@@ -179,11 +177,12 @@ function App() {
             .catch ((err) => console.log(err));
     }
 
-    function authorize(email, password) {
+    function onAuthorize(email, password) {
         auth.authorize(email, password)
             .then ((data) => {
                 if (data.token) {
-                    tokenCheck()
+                    setLoggedIn(true);
+                    setUserEmail(email);
                     history.push('/')
                 }
             })
@@ -200,15 +199,14 @@ function App() {
 
                                 <Route exact={true} path="/sign-in">
                                     <Login  
-                                        authorize = {authorize}
-                                        handleLogin = {handleLogin}   
+                                        onAuthorize = {onAuthorize}
                                     />
 
                                 </Route>
 
                                 <Route exact={true} path="/sign-up">
                                     <Register 
-                                        onButtonClick = {register}
+                                        onButtonClick = {onRegister}
                                     />
                                 </Route>
 

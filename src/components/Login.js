@@ -2,7 +2,7 @@ import React from "react";
 import {withRouter, useHistory} from 'react-router-dom';
 import Header from "./Header.js";
 
-function Login ({authorize, handleLogin}) {
+function Login ({onAuthorize}) {
 
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
@@ -23,8 +23,7 @@ function Login ({authorize, handleLogin}) {
         }
         setEmail('')
         setPassword('')
-        handleLogin(e)
-        authorize(email, password)
+        onAuthorize(email, password)
     }
 
     function onRegister () {
